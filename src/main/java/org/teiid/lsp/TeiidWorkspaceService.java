@@ -32,9 +32,9 @@ import org.slf4j.LoggerFactory;
 /**
  * @author lhein
  */
-public class MyWorkspaceService implements WorkspaceService {
+public class TeiidWorkspaceService implements WorkspaceService {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(MyWorkspaceService.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(TeiidWorkspaceService.class);
 
 	@Override
 	public CompletableFuture<List<? extends SymbolInformation>> symbol(WorkspaceSymbolParams params) {

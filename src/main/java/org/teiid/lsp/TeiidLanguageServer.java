@@ -33,7 +33,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class MyLanguageServer implements LanguageServer, LanguageClientAware {
+public class TeiidLanguageServer implements LanguageServer, LanguageClientAware {
 	
 	private static final String OS = System.getProperty("os.name").toLowerCase();
 	
@@ -55,7 +55,7 @@ public class MyLanguageServer implements LanguageServer, LanguageClientAware {
 		}
 	}
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(MyLanguageServer.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(TeiidLanguageServer.class);
 
 	public static final String LANGUAGE_ID = "MY_LANGUAGE_ID";
 	
@@ -63,13 +63,13 @@ public class MyLanguageServer implements LanguageServer, LanguageClientAware {
 	private volatile boolean shutdown;
 	private long parentProcessId;
 	private WorkspaceService workspaceService;
-	private MyTextDocumentService textDocumentService;
+	private TeiidTextDocumentService textDocumentService;
 
 	private LanguageClient client;
 	
-	public MyLanguageServer() {
-		this.textDocumentService = new MyTextDocumentService();
-		this.workspaceService = new MyWorkspaceService();
+	public TeiidLanguageServer() {
+		this.textDocumentService = new TeiidTextDocumentService();
+		this.workspaceService = new TeiidWorkspaceService();
 	}
 	
 	
@@ -142,7 +142,7 @@ public class MyLanguageServer implements LanguageServer, LanguageClientAware {
 	/**
 	 * @return the textDocumentService
 	 */
-	public MyTextDocumentService getTextDocumentService() {
+	public TeiidTextDocumentService getTextDocumentService() {
 		return this.textDocumentService;
 	}
 	

@@ -41,15 +41,15 @@ import org.eclipse.lsp4j.jsonrpc.messages.Either;
 import org.eclipse.lsp4j.services.LanguageClient;
 import org.eclipse.lsp4j.services.TextDocumentService;
 import org.junit.jupiter.api.AfterEach;
-import org.teiid.lsp.MyLanguageServer;
+import org.teiid.lsp.TeiidLanguageServer;
 
-public abstract class AbstractMyLanguageServerTest {
+public abstract class AbstractTeiidLanguageServerTest {
 
 	protected static final String DUMMY_URI = "dummyUri";
 	private String extensionUsed = ".demo";
-	private MyLanguageServer myLanguageServer;
+	private TeiidLanguageServer myLanguageServer;
 
-	public AbstractMyLanguageServerTest() {
+	public AbstractTeiidLanguageServerTest() {
 		super();
 	}
 	
@@ -84,11 +84,11 @@ public abstract class AbstractMyLanguageServerTest {
 		}
 	}
 	
-	protected MyLanguageServer initializeLanguageServer(String text) throws URISyntaxException, InterruptedException, ExecutionException {
+	protected TeiidLanguageServer initializeLanguageServer(String text) throws URISyntaxException, InterruptedException, ExecutionException {
 		return initializeLanguageServer(extensionUsed, createTestTextDocument(text, extensionUsed));
 	}
 
-	protected MyLanguageServer initializeLanguageServer(String suffixFileName, TextDocumentItem... documentItems) throws URISyntaxException, InterruptedException, ExecutionException {
+	protected TeiidLanguageServer initializeLanguageServer(String suffixFileName, TextDocumentItem... documentItems) throws URISyntaxException, InterruptedException, ExecutionException {
 		this.extensionUsed = suffixFileName;
 		initializeLanguageServer(getInitParams());
 		for (TextDocumentItem docItem : documentItems) {
@@ -98,7 +98,7 @@ public abstract class AbstractMyLanguageServerTest {
 	}
 	
 	private void initializeLanguageServer(InitializeParams params) throws ExecutionException, InterruptedException {
-		myLanguageServer = new MyLanguageServer();
+		myLanguageServer = new TeiidLanguageServer();
 		myLanguageServer.connect(new DummyLanguageClient());
 		myLanguageServer.startServer();
 		CompletableFuture<InitializeResult> initialize = myLanguageServer.initialize(params);
@@ -118,14 +118,14 @@ public abstract class AbstractMyLanguageServerTest {
 	}
 	
 	private TextDocumentItem createTestTextDocumentWithFilename(String text, String fileName) {
-		return new TextDocumentItem(fileName, MyLanguageServer.LANGUAGE_ID, 0, text);
+		return new TextDocumentItem(fileName, TeiidLanguageServer.LANGUAGE_ID, 0, text);
 	}
 
-	protected CompletableFuture<Either<List<CompletionItem>, CompletionList>> getCompletionFor(MyLanguageServer camelLanguageServer, Position position) {
+	protected CompletableFuture<Either<List<CompletionItem>, CompletionList>> getCompletionFor(TeiidLanguageServer camelLanguageServer, Position position) {
 		return getCompletionFor(camelLanguageServer, position, DUMMY_URI+extensionUsed);
 	}
 	
-	protected CompletableFuture<Either<List<CompletionItem>, CompletionList>> getCompletionFor(MyLanguageServer camelLanguageServer, Position position, String filename) {
+	protected CompletableFuture<Either<List<CompletionItem>, CompletionList>> getCompletionFor(TeiidLanguageServer camelLanguageServer, Position position, String filename) {
 		TextDocumentService textDocumentService = camelLanguageServer.getTextDocumentService();
 		CompletionParams completionParams = new CompletionParams(new TextDocumentIdentifier(filename), position);
 		return textDocumentService.completion(completionParams);
