@@ -61,6 +61,7 @@ import org.eclipse.lsp4j.jsonrpc.messages.Either;
 import org.eclipse.lsp4j.services.TextDocumentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.teiid.lsp.completion.DDLGenericCompletionItem;
 
 public class TeiidTextDocumentService implements TextDocumentService {
 
@@ -71,8 +72,11 @@ public class TeiidTextDocumentService implements TextDocumentService {
 	public CompletableFuture<Either<List<CompletionItem>, CompletionList>> completion(CompletionParams completionParams) {
 		String uri = completionParams.getTextDocument().getUri();
 		LOGGER.info("completion: {}", uri);
-		//TODO: usually the first provided item is completion, provide a dummy one returning always "demo", to show a test for it
-		return CompletableFuture.completedFuture(Either.forLeft(Collections.singletonList(new CompletionItem("demo"))));
+		if(uri.endsWith(".ddl")) {
+			return CompletableFuture.completedFuture(Either.forLeft(Collections.singletonList(new DDLGenericCompletionItem().getCreateDataView())));
+		} else {
+			return CompletableFuture.completedFuture(null);
+		}
 	}
 
 	@Override

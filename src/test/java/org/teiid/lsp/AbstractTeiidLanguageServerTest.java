@@ -46,7 +46,7 @@ import org.teiid.lsp.TeiidLanguageServer;
 public abstract class AbstractTeiidLanguageServerTest {
 
 	protected static final String DUMMY_URI = "dummyUri";
-	private String extensionUsed = ".demo";
+	private String extensionUsed = ".ddl";
 	private TeiidLanguageServer myLanguageServer;
 
 	public AbstractTeiidLanguageServerTest() {
@@ -86,6 +86,10 @@ public abstract class AbstractTeiidLanguageServerTest {
 	
 	protected TeiidLanguageServer initializeLanguageServer(String text) throws URISyntaxException, InterruptedException, ExecutionException {
 		return initializeLanguageServer(extensionUsed, createTestTextDocument(text, extensionUsed));
+	}
+	
+	protected TeiidLanguageServer initializeLanguageServer(String text, String extension) throws URISyntaxException, InterruptedException, ExecutionException {
+		return initializeLanguageServer(extension, createTestTextDocument(text, extension));
 	}
 
 	protected TeiidLanguageServer initializeLanguageServer(String suffixFileName, TextDocumentItem... documentItems) throws URISyntaxException, InterruptedException, ExecutionException {
