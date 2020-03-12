@@ -1,4 +1,4 @@
-package com.github.mylanguageserver.websocket;
+package org.teiid.lsp.websocket;
 
 import javax.websocket.DeploymentException;
 

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.mylanguageserver;
+package org.teiid.lsp;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -41,6 +41,7 @@ import org.eclipse.lsp4j.jsonrpc.messages.Either;
 import org.eclipse.lsp4j.services.LanguageClient;
 import org.eclipse.lsp4j.services.TextDocumentService;
 import org.junit.jupiter.api.AfterEach;
+import org.teiid.lsp.MyLanguageServer;
 
 public abstract class AbstractMyLanguageServerTest {
 
