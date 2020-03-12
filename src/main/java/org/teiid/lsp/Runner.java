@@ -1,4 +1,4 @@
-package com.github.mylanguageserver;
+package org.teiid.lsp;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,8 +6,7 @@ import java.util.List;
 import org.eclipse.lsp4j.jsonrpc.Launcher;
 import org.eclipse.lsp4j.launch.LSPLauncher;
 import org.eclipse.lsp4j.services.LanguageClient;
-
-import com.github.mylanguageserver.websocket.WebSocketRunner;
+import org.teiid.lsp.websocket.WebSocketRunner;
 
 
 public class Runner {

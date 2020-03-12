@@ -1,4 +1,4 @@
-package com.github.mylanguageserver.websocket;
+package org.teiid.lsp.websocket;
 
 import java.util.Collection;
 
@@ -6,8 +6,7 @@ import org.eclipse.lsp4j.jsonrpc.Launcher.Builder;
 import org.eclipse.lsp4j.services.LanguageClient;
 import org.eclipse.lsp4j.services.LanguageClientAware;
 import org.eclipse.lsp4j.websocket.WebSocketEndpoint;
-
-import com.github.mylanguageserver.MyLanguageServer;
+import org.teiid.lsp.MyLanguageServer;
 
 public class MyLSPWebSocketEndpoint extends WebSocketEndpoint<LanguageClient> {
 

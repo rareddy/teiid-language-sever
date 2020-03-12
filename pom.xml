@@ -2,13 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.github.mylanguageserver</groupId>
-	<artifactId>my-lsp-server</artifactId>
+	<groupId>org.teiid</groupId>
+	<artifactId>teiid-language-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	
-	<name>My Language Server</name>
-	<description>My La,guage Serve implementation written in Java</description>
-	<url>https://github.com/apupier/language-server-template</url>
+	<name>Teiid Language Server</name>
+	<description>Teiid Language Server implementation written in Java</description>
+	<url>https://github.com/teiid/teiid-language-server</url>
 	
 	<licenses>
 	    	<license>
@@ -18,9 +18,9 @@
 	</licenses>
 
 	<scm>
-  		<connection>scm:git:https://github.com/apupier/language-server-template.git</connection>
-  		<developerConnection>scm:git:https://github.com/apupier/language-server-template.git</developerConnection>
-  		<url>https://github.com/apupier/language-server-template/tree/master</url>
+  		<connection>scm:git:https://github.com/teiid/teiid-language-server.git</connection>
+  		<developerConnection>scm:git:https://github.com/teiid/teiid-language-server.git</developerConnection>
+  		<url>https://github.com/teiid/teiid-language-server/tree/master</url>
 	</scm>
 
 	<properties>

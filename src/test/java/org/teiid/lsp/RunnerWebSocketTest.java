@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.mylanguageserver;
+package org.teiid.lsp;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -37,8 +37,8 @@ import javax.websocket.Session;
 import org.glassfish.tyrus.client.ClientManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-
-import com.github.mylanguageserver.websocket.MyLSPWebSocketServerConfigProvider;
+import org.teiid.lsp.Runner;
+import org.teiid.lsp.websocket.MyLSPWebSocketServerConfigProvider;
 
 public class RunnerWebSocketTest {
 	
