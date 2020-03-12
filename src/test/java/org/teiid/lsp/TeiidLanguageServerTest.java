@@ -27,19 +27,27 @@ import org.eclipse.lsp4j.Position;
 import org.eclipse.lsp4j.jsonrpc.messages.Either;
 import org.junit.jupiter.api.Test;
 import org.teiid.lsp.TeiidLanguageServer;
-
+import org.teiid.lsp.completion.DDLGenericCompletionItem;
 
 public class TeiidLanguageServerTest extends AbstractTeiidLanguageServerTest {
 	
 	@Test
-	public void testProvideCompletionForCamelBlueprintNamespace() throws Exception {
-		TeiidLanguageServer languageServer = initializeLanguageServer("some text");
+	public void testProvideCompletionForEmptyDDLFile() throws Exception {
+		TeiidLanguageServer languageServer = initializeLanguageServer("");
 		
 		CompletableFuture<Either<List<CompletionItem>, CompletionList>> completions = getCompletionFor(languageServer, new Position(0, 0));
 		
-		assertThat(completions.get().getLeft()).contains(new CompletionItem("demo"));
+		assertThat(completions.get().getLeft()).contains(new DDLGenericCompletionItem().getCreateDataView());
 	}
-
+	
+	@Test
+	public void testProvideNoCompletionForNonDDLFile() throws Exception {
+		TeiidLanguageServer languageServer = initializeLanguageServer("", ".anotherextension");
+		
+		CompletableFuture<Either<List<CompletionItem>, CompletionList>> completions = getCompletionFor(languageServer, new Position(0, 0));
+		
+		assertThat(completions.get()).isNull();
+	}
 	
 }
 
