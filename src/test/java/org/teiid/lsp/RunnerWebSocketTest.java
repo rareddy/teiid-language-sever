@@ -38,7 +38,7 @@ import org.glassfish.tyrus.client.ClientManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.teiid.lsp.Runner;
-import org.teiid.lsp.websocket.MyLSPWebSocketServerConfigProvider;
+import org.teiid.lsp.websocket.TeiidLSPWebSocketServerConfigProvider;
 
 public class RunnerWebSocketTest {
 	
@@ -55,21 +55,21 @@ public class RunnerWebSocketTest {
 	@Test
 	public void testWebsocketServerStartedWithDefaults() throws Exception {
 		String[] arguments = new String[] {"--websocket"};
-		String expectedConnectionURI = "ws://localhost:8025"+MyLSPWebSocketServerConfigProvider.WEBSOCKET_SERVER_PATH;
+		String expectedConnectionURI = "ws://localhost:8025"+TeiidLSPWebSocketServerConfigProvider.WEBSOCKET_SERVER_PATH;
 		testWebSocketServerConnection(arguments, expectedConnectionURI);
 	}
 	
 	@Test
 	public void testWebsocketServerStartedWithPortSpecified() throws Exception {
 		String[] arguments = new String[] {"--websocket", "--port=8026"};
-		String expectedConnectionURI = "ws://localhost:8026"+MyLSPWebSocketServerConfigProvider.WEBSOCKET_SERVER_PATH;
+		String expectedConnectionURI = "ws://localhost:8026"+TeiidLSPWebSocketServerConfigProvider.WEBSOCKET_SERVER_PATH;
 		testWebSocketServerConnection(arguments, expectedConnectionURI);
 	}
 	
 	@Test
 	public void testWebsocketServerStartedWithContextPathSpecified() throws Exception {
 		String[] arguments = new String[] {"--websocket", "--contextPath=/test"};
-		String expectedConnectionURI = "ws://localhost:8025/test"+MyLSPWebSocketServerConfigProvider.WEBSOCKET_SERVER_PATH;
+		String expectedConnectionURI = "ws://localhost:8025/test"+TeiidLSPWebSocketServerConfigProvider.WEBSOCKET_SERVER_PATH;
 		testWebSocketServerConnection(arguments, expectedConnectionURI);
 	}
 	
@@ -77,7 +77,7 @@ public class RunnerWebSocketTest {
 	public void testWebsocketServerStartedWithHostnameSpecified() throws Exception {
 		String localHostname = retrieveLocalHostname();
 		String[] arguments = new String[] {"--websocket", "--hostname="+localHostname};
-		String expectedConnectionURI = "ws://"+localHostname+":8025"+MyLSPWebSocketServerConfigProvider.WEBSOCKET_SERVER_PATH;
+		String expectedConnectionURI = "ws://"+localHostname+":8025"+TeiidLSPWebSocketServerConfigProvider.WEBSOCKET_SERVER_PATH;
 		testWebSocketServerConnection(arguments, expectedConnectionURI);
 	}
 
@@ -85,7 +85,7 @@ public class RunnerWebSocketTest {
 	public void testWebsocketServerStartedWithHostnameAndPortAndContextPathSpecified() throws Exception {
 		String localHostname = retrieveLocalHostname();
 		String[] arguments = new String[] {"--websocket", "--hostname="+localHostname, "--port=8027", "--contextPath=/test"};
-		String expectedConnectionURI = "ws://"+localHostname+":8027/test"+MyLSPWebSocketServerConfigProvider.WEBSOCKET_SERVER_PATH;
+		String expectedConnectionURI = "ws://"+localHostname+":8027/test"+TeiidLSPWebSocketServerConfigProvider.WEBSOCKET_SERVER_PATH;
 		testWebSocketServerConnection(arguments, expectedConnectionURI);
 	}
 	

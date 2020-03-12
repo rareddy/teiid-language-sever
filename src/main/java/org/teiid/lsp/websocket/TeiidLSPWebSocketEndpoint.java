@@ -6,13 +6,13 @@ import org.eclipse.lsp4j.jsonrpc.Launcher.Builder;
 import org.eclipse.lsp4j.services.LanguageClient;
 import org.eclipse.lsp4j.services.LanguageClientAware;
 import org.eclipse.lsp4j.websocket.WebSocketEndpoint;
-import org.teiid.lsp.MyLanguageServer;
+import org.teiid.lsp.TeiidLanguageServer;
 
-public class MyLSPWebSocketEndpoint extends WebSocketEndpoint<LanguageClient> {
+public class TeiidLSPWebSocketEndpoint extends WebSocketEndpoint<LanguageClient> {
 
 	@Override
 	protected void configure(Builder<LanguageClient> builder) {
-		builder.setLocalService(new MyLanguageServer());
+		builder.setLocalService(new TeiidLanguageServer());
 		builder.setRemoteInterface(LanguageClient.class);
 	}
 

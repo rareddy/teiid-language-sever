@@ -26,14 +26,14 @@ import org.eclipse.lsp4j.CompletionList;
 import org.eclipse.lsp4j.Position;
 import org.eclipse.lsp4j.jsonrpc.messages.Either;
 import org.junit.jupiter.api.Test;
-import org.teiid.lsp.MyLanguageServer;
+import org.teiid.lsp.TeiidLanguageServer;
 
 
-public class MyLanguageServerTest extends AbstractMyLanguageServerTest {
+public class TeiidLanguageServerTest extends AbstractTeiidLanguageServerTest {
 	
 	@Test
 	public void testProvideCompletionForCamelBlueprintNamespace() throws Exception {
-		MyLanguageServer languageServer = initializeLanguageServer("some text");
+		TeiidLanguageServer languageServer = initializeLanguageServer("some text");
 		
 		CompletableFuture<Either<List<CompletionItem>, CompletionList>> completions = getCompletionFor(languageServer, new Position(0, 0));
 		

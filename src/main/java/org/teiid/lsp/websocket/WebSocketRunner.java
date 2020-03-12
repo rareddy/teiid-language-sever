@@ -18,7 +18,7 @@ public class WebSocketRunner {
 		hostname = hostname != null ? hostname : DEFAULT_HOSTNAME;
 		port = port != -1 ? port : DEFAULT_PORT;
 		contextPath = contextPath != null ? contextPath : DEFAULT_CONTEXT_PATH;
-		Server server = new Server(hostname, port, contextPath, null, MyLSPWebSocketServerConfigProvider.class);
+		Server server = new Server(hostname, port, contextPath, null, TeiidLSPWebSocketServerConfigProvider.class);
 		Runtime.getRuntime().addShutdownHook(new Thread(server::stop, "camel-lsp-websocket-server-shutdown-hook"));
 
 		try {

@@ -13,7 +13,7 @@ public class Runner {
 	/**
 	 * For test only
 	 */
-	static MyLanguageServer server;
+	static TeiidLanguageServer server;
 	
 	private static final String WEBSOCKET_PARAMETER = "--websocket";
 	private static final String PORT_PARAMETER = "--port=";
@@ -28,7 +28,7 @@ public class Runner {
 			String contextPath = extractContextPath(arguments);
 			new WebSocketRunner().runWebSocketServer(hostname, port, contextPath);
 		} else {
-			server = new MyLanguageServer();
+			server = new TeiidLanguageServer();
 			Launcher<LanguageClient> launcher = LSPLauncher.createServerLauncher(server, System.in, System.out);
 			server.connect(launcher.getRemoteProxy());
 			launcher.startListening();

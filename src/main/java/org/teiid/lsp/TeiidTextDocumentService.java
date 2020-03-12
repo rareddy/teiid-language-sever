@@ -59,9 +59,9 @@ import org.eclipse.lsp4j.services.TextDocumentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MyTextDocumentService implements TextDocumentService {
+public class TeiidTextDocumentService implements TextDocumentService {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(MyTextDocumentService.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(TeiidTextDocumentService.class);
 	private Map<String, TextDocumentItem> openedDocuments = new HashMap<>();
 
 	@Override
