@@ -34,6 +34,7 @@
 		<assertj.version>3.15.0</assertj.version>
 		<awaitility.version>4.0.2</awaitility.version>
 		<tyrus.version>1.16</tyrus.version>
+		<jacoco.version>0.8.5</jacoco.version>
 	</properties>
 
 	<build>
@@ -58,7 +59,19 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 
 		<pluginManagement>
