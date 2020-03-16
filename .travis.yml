@@ -19,5 +19,19 @@ jobs:
       jdk: openjdk13
       script:
         - mvn verify
+    - stage: deploy
+      name: "Sonar analysis"
+      jdk: openjdk11
+      script:
+        - if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" && $IS_SNAPSHOT == "true" || -n "$TRAVIS_TAG" && $IS_SNAPSHOT == "false" ]]; then 
+            mvn verify -Dtest="*,!RunnerStandardIOTest,!RunnerWebSocketTest" -B sonar:sonar;
+          fi
+      addons:
+        sonarcloud:
+          organization: "teiid"
+          token:
+            secure: "TggRuDyFbjFNts8bBcoQhVq9a8dAiEN0Y/JqHfprksA+ekvJ7MLhfQCNFCHnWVdCAOCX00jNOrDR/nKLLV7NsCxVGZINYN17Ls4zfYPGXk6hmGAX+E58XM8cBhS/tKO8YSw3mL/L0n8saKOsANwGubUIu4pcUVnAYx2BfhYDcznEUT2NDLhZOc4ZNQdq2fKBgi4vlUVieonqEcdCPpTDIVglqlZZcufiBwtdLKwQN89L4MT+351JkVFiz6JjDTUManmnvkdGP7lL62YJVWH87DsEvxTJlWPBeTslG++yv7ctgeD7AalmkU/WZZ8ycChQORSn6mKB3uKIFQQubyeUPUwGFwBUMy8jcOXCGYcThPSfbPaK4NFUySdPrLKqU5lsDhqf/eXqj2KIqPjxBm0QI2/RQdyjWYLKvqf0Eo1TtetDNA74xM1gpKyh/UsXD5Lfkp3JtLlzgTY1nph/q4A+8aJq/WEFJade4AAQpxa4wqUW7TnY5z1te01z+yvnYdE/Lov7FgVZ3Iy37jBqZYAzwlkGpFFLltgrmpaPyuM31w2Cp/+v+qYuGj41EZm8AcnbhttlnWc+xed6q9sItKCdH33hLpXiH9AHTp2elulV1s062wDe9/gIKHeMV3K7dSpf5BIGXWogjDo2+DFr/NKKIIY7P5fWFXU+W3QxWCmN4hU="
 stages:
  - test
+ - name: deploy
+   if: branch = master AND NOT type = pull_request
