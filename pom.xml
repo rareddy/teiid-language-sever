@@ -22,6 +22,15 @@
   		<developerConnection>scm:git:https://github.com/teiid/teiid-language-server.git</developerConnection>
   		<url>https://github.com/teiid/teiid-language-server/tree/master</url>
 	</scm>
+	
+	<developers>
+		<developer>
+			<name>Aurélien pupier</name>
+			<email>apupier@redhat.com</email>
+			<organization>Red Hat</organization>
+			<organizationUrl>https://redhat.com</organizationUrl>
+		</developer>
+	</developers>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
