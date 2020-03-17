@@ -23,6 +23,11 @@ jobs:
       name: "Sonar analysis"
       jdk: openjdk11
       script:
+        - if [[ $VERSION_SUFFIX == "SNAPSHOT" ]]; then
+          export IS_SNAPSHOT=true;
+         else
+          export IS_SNAPSHOT=false;
+         fi
         - if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" && $IS_SNAPSHOT == "true" || -n "$TRAVIS_TAG" && $IS_SNAPSHOT == "false" ]]; then 
             mvn verify -Dtest="*,!RunnerStandardIOTest,!RunnerWebSocketTest" -B sonar:sonar;
           fi
