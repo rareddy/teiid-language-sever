@@ -1,11 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.teiid</groupId>
 	<artifactId>teiid-language-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<name>Teiid Language Server</name>
 	<description>Teiid Language Server implementation written in Java</description>
@@ -22,7 +20,8 @@
 		<connection>scm:git:https://github.com/teiid/teiid-language-server.git</connection>
 		<developerConnection>scm:git:https://github.com/teiid/teiid-language-server.git</developerConnection>
 		<url>https://github.com/teiid/teiid-language-server/tree/master</url>
-	</scm>
+	  <tag>teiid-language-server-0.0.1</tag>
+  </scm>
 
 	<developers>
 		<developer>
