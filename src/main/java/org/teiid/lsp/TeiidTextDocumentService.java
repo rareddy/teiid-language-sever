@@ -72,7 +72,7 @@ public class TeiidTextDocumentService implements TextDocumentService {
 	public CompletableFuture<Either<List<CompletionItem>, CompletionList>> completion(CompletionParams completionParams) {
 		String uri = completionParams.getTextDocument().getUri();
 		LOGGER.info("completion: {}", uri);
-		if(uri.endsWith(".ddl")) {
+		if(uri.endsWith(".ddl") || uri.endsWith(".sql")) {
 			return CompletableFuture.completedFuture(Either.forLeft(Collections.singletonList(new DDLGenericCompletionItem().getCreateDataView())));
 		} else {
 			return CompletableFuture.completedFuture(null);

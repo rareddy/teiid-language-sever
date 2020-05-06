@@ -41,7 +41,6 @@ import org.eclipse.lsp4j.jsonrpc.messages.Either;
 import org.eclipse.lsp4j.services.LanguageClient;
 import org.eclipse.lsp4j.services.TextDocumentService;
 import org.junit.jupiter.api.AfterEach;
-import org.teiid.lsp.TeiidLanguageServer;
 
 public abstract class AbstractTeiidLanguageServerTest {
 

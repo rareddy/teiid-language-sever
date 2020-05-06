@@ -26,7 +26,6 @@ import org.eclipse.lsp4j.CompletionList;
 import org.eclipse.lsp4j.Position;
 import org.eclipse.lsp4j.jsonrpc.messages.Either;
 import org.junit.jupiter.api.Test;
-import org.teiid.lsp.TeiidLanguageServer;
 import org.teiid.lsp.completion.DDLGenericCompletionItem;
 
 public class TeiidLanguageServerTest extends AbstractTeiidLanguageServerTest {

@@ -37,7 +37,6 @@ import javax.websocket.Session;
 import org.glassfish.tyrus.client.ClientManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.teiid.lsp.Runner;
 import org.teiid.lsp.websocket.TeiidLSPWebSocketServerConfigProvider;
 
 public class RunnerWebSocketTest {
