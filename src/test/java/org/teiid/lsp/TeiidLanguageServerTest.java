@@ -35,7 +35,7 @@ import org.teiid.lsp.completion.DDLGenericCompletionItem;
 public class TeiidLanguageServerTest extends AbstractTeiidLanguageServerTest {
 	
 	@DisplayName("Testing completion for an empty file")
-	@ParameterizedTest
+	@ParameterizedTest(name = "{index} => usedExtension=''{0}''")
 	@ValueSource(strings = {".sql", ".ddl"})
 	public void testProvideCompletionForEmptyFile(String usedExtension) throws Exception {
 		TeiidLanguageServer languageServer = initializeLanguageServer("", usedExtension);
