@@ -25,21 +25,27 @@ import org.eclipse.lsp4j.CompletionItem;
 import org.eclipse.lsp4j.CompletionList;
 import org.eclipse.lsp4j.Position;
 import org.eclipse.lsp4j.jsonrpc.messages.Either;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.teiid.lsp.TeiidLanguageServer;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.teiid.lsp.completion.DDLGenericCompletionItem;
 
+@DisplayName("Language Server Tests")
 public class TeiidLanguageServerTest extends AbstractTeiidLanguageServerTest {
 	
-	@Test
-	public void testProvideCompletionForEmptyDDLFile() throws Exception {
-		TeiidLanguageServer languageServer = initializeLanguageServer("");
+	@DisplayName("Testing completion for an empty file")
+	@ParameterizedTest(name = "{index} => usedExtension=''{0}''")
+	@ValueSource(strings = {".sql", ".ddl"})
+	public void testProvideCompletionForEmptyFile(String usedExtension) throws Exception {
+		TeiidLanguageServer languageServer = initializeLanguageServer("", usedExtension);
 		
 		CompletableFuture<Either<List<CompletionItem>, CompletionList>> completions = getCompletionFor(languageServer, new Position(0, 0));
 		
 		assertThat(completions.get().getLeft()).contains(new DDLGenericCompletionItem().getCreateDataView());
 	}
 	
+	@DisplayName("Testing completion for a non-compatible file (neither .ddl nor .sql)")
 	@Test
 	public void testProvideNoCompletionForNonDDLFile() throws Exception {
 		TeiidLanguageServer languageServer = initializeLanguageServer("", ".anotherextension");
