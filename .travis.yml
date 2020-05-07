@@ -16,7 +16,7 @@ jobs:
       script:
         - mvn verify
     - stage: test
-      jdk: openjdk13
+      jdk: openjdk14
       script:
         - mvn verify
     - stage: deploy
@@ -32,6 +32,13 @@ jobs:
         - if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" && $IS_SNAPSHOT == "true" || -n "$TRAVIS_TAG" && $IS_SNAPSHOT == "false" ]]; then 
             mvn verify -Dtest="*,!RunnerStandardIOTest,!RunnerWebSocketTest" -B sonar:sonar;
           fi
+        - if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" && $IS_SNAPSHOT == "true" ]]; then
+         ./.travis/before-deploy.sh;
+         ./.travis/deploy.sh;
+         elif [[ -n "$TRAVIS_TAG" && $IS_SNAPSHOT == "false" ]]; then
+         ./.travis/before-deploy.sh;
+         ./.travis/deploy.sh;
+         fi          
       addons:
         sonarcloud:
           organization: "teiid"
